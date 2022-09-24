@@ -1,0 +1,113 @@
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row m-2">
+                        <div class="col">User name</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="user.name">
+                        </div>
+                        <div class="col">Age</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="user.age">
+                        </div>
+                    </div>
+                    <!-- --- -->
+                    <div class="row m-2">
+                        <div class="col">
+                            <button nz-button type="button" nzType="primary" (click)="onSearch()">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    DataTable Example
+                </div>
+                <div class="card-body">
+                    <nz-table #basicTable [nzData]="listOfData | async" nzSize="small">
+                        <thead>
+                            <tr>
+                                <th>email</th>
+                                <th>Department</th>
+                                <th>localtion</th>
+                                <th>address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of basicTable.data">
+                                <td>{{ data.email }}</td>
+                                <td>{{ data.department }}</td>
+                                <td>{{ data.localtion }}</td>
+                                <td>{{ data.address }}</td>
+                                <td>
+                                    <a (click)="onHandlehandleUpdate(data)">Action 一 {{ data.name }}</a>
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <a>Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+</div>
+
+
+<ng-container *ngIf="isVisible">
+    <nz-modal [(nzVisible)]="isVisible" nzWidth="70%" nzTitle="Register User" (nzOnCancel)="onHandleCancel()">
+        <div *nzModalContent>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row m-2">
+                        <div class="col">Email<span class="fas-required">&nbsp;*</span></div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userUpdate.email" disabled>
+                        </div>
+                        <div class="col">password<span class="fas-required">&nbsp;*</span></div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userUpdate.password" type="password" disabled>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col">department</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userUpdate.department">
+                        </div>
+                        <div class="col">localtion</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userUpdate.localtion">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col">address</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userUpdate.address">
+                        </div>
+                        <div [hidden] class="col-6"></div>
+                    </div>
+                    <!-- --- -->
+                </div>
+            </div>
+        </div>
+        <div *nzModalFooter>
+            <button nz-button type="button" nzType="primary" (click)="onHandleOk()">Register</button>
+        </div>
+    </nz-modal>
+</ng-container>

@@ -1,0 +1,102 @@
+<div class="body-page">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <!-- <form nz-form [formGroup]="validateForm"> -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-floating mb-3">
+                                        <label for="inputEmail">Email address</label>
+                                        <input class="form-control" [(ngModel)]="userLogin.email">
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <label for="inputPassword">Password</label>
+                                        <input class="form-control" id="inputPassword" type="password"
+                                            placeholder="Password" [(ngModel)]="userLogin.password" />
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox"
+                                            value="" />
+                                        <label class="form-check-label" for="inputRememberPassword">Remember
+                                            Password</label>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <a class="small">Forgot Password?</a>
+                                        <a class="btn btn-primary" (click)="onHandleLogin()">Login</a>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small">
+                                        <a (click)="onHandleRegister()">Need an account? Sign up!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </form> -->
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="isVisible">
+    <nz-modal [(nzVisible)]="isVisible" nzWidth="70%" nzTitle="Register User" (nzOnCancel)="onHandleCancel()">
+        <div *nzModalContent>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row m-2">
+                        <div class="col">Email<span class="fas-required">&nbsp;*</span></div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userRegister.email">
+                        </div>
+                        <div class="col">password<span class="fas-required">&nbsp;*</span></div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userRegister.password" type="password">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col">department</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userRegister.department">
+                        </div>
+                        <div class="col">localtion</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userRegister.localtion">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col">address</div>
+                        <div class="col-4">
+                            <input nz-input [(ngModel)]="userRegister.address">
+                        </div>
+                    </div>
+                    <!-- --- -->
+                </div>
+            </div>
+        </div>
+        <div *nzModalFooter>
+            <button nz-button type="button" nzType="primary" (click)="onHandleOk()">Register</button>
+        </div>
+    </nz-modal>
+</ng-container>
